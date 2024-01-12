@@ -7,7 +7,7 @@ import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContextScope } from '@radix-ui/react-context';
 import { useDirection } from '@radix-ui/react-direction';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
-import { useFocusGuards } from '@radix-ui/react-focus-guards';
+// import { useFocusGuards } from '@radix-ui/react-focus-guards';
 import { FocusScope } from '@radix-ui/react-focus-scope';
 import { useId } from '@radix-ui/react-id';
 import * as PopperPrimitive from '@radix-ui/react-popper';
@@ -20,8 +20,8 @@ import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { useLayoutEffect } from '@radix-ui/react-use-layout-effect';
 import { usePrevious } from '@radix-ui/react-use-previous';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { hideOthers } from 'aria-hidden';
-import { RemoveScroll } from 'react-remove-scroll';
+// import { hideOthers } from 'aria-hidden';
+// import { RemoveScroll } from 'react-remove-scroll';
 
 import type * as Radix from '@radix-ui/react-primitive';
 import type { Scope } from '@radix-ui/react-context';
@@ -518,13 +518,13 @@ const SelectContentImpl = React.forwardRef<SelectContentImplElement, SelectConte
     const firstValidItemFoundRef = React.useRef(false);
 
     // aria-hide everything except the content (better supported equivalent to setting aria-modal)
-    React.useEffect(() => {
-      if (content) return hideOthers(content);
-    }, [content]);
+    // React.useEffect(() => {
+    //   if (content) return hideOthers(content);
+    // }, [content]);
 
     // Make sure the whole tree has focus guards as our `Select` may be
     // the last element in the DOM (because of the `Portal`)
-    useFocusGuards();
+    // useFocusGuards();
 
     const focusFirst = React.useCallback(
       (candidates: Array<HTMLElement | null>) => {
@@ -679,7 +679,7 @@ const SelectContentImpl = React.forwardRef<SelectContentImplElement, SelectConte
         isPositioned={isPositioned}
         searchRef={searchRef}
       >
-        <RemoveScroll as={Slot} allowPinchZoom>
+        {/* <RemoveScroll as={Slot} allowPinchZoom> */}
           <FocusScope
             asChild
             // we make sure we're not trapping once it's been closed
@@ -696,7 +696,7 @@ const SelectContentImpl = React.forwardRef<SelectContentImplElement, SelectConte
           >
             <DismissableLayer
               asChild
-              disableOutsidePointerEvents
+              disableOutsidePointerEvents={false}
               onEscapeKeyDown={onEscapeKeyDown}
               onPointerDownOutside={onPointerDownOutside}
               // When focus is trapped, a focusout event may still happen.
@@ -755,7 +755,7 @@ const SelectContentImpl = React.forwardRef<SelectContentImplElement, SelectConte
               />
             </DismissableLayer>
           </FocusScope>
-        </RemoveScroll>
+        {/* </RemoveScroll> */}
       </SelectContentProvider>
     );
   }

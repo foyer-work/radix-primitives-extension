@@ -917,6 +917,7 @@ const NavigationMenuContentImpl = React.forwardRef<
     <FocusGroup asChild>
       <DismissableLayer
         id={contentId}
+        disableOutsidePointerEvents={false}
         aria-labelledby={triggerId}
         data-motion={motionAttribute}
         data-orientation={context.orientation}

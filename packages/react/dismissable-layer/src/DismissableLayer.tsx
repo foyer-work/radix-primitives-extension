@@ -110,7 +110,8 @@ const DismissableLayer = React.forwardRef<DismissableLayerElement, DismissableLa
         onDismiss();
       }
     }, ownerDocument);
-
+console.log('context.layers', context.layers)
+console.log('bro', ownerDocument)
     React.useEffect(() => {
       if (!node) return;
       if (disableOutsidePointerEvents) {

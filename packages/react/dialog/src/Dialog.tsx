@@ -9,9 +9,9 @@ import { FocusScope } from '@radix-ui/react-focus-scope';
 import { Portal as PortalPrimitive } from '@radix-ui/react-portal';
 import { Presence } from '@radix-ui/react-presence';
 import { Primitive } from '@radix-ui/react-primitive';
-import { useFocusGuards } from '@radix-ui/react-focus-guards';
-import { RemoveScroll } from 'react-remove-scroll';
-import { hideOthers } from 'aria-hidden';
+// import { useFocusGuards } from '@radix-ui/react-focus-guards';
+// import { RemoveScroll } from 'react-remove-scroll';
+// import { hideOthers } from 'aria-hidden';
 import { Slot } from '@radix-ui/react-slot';
 
 import type * as Radix from '@radix-ui/react-primitive';
@@ -201,7 +201,7 @@ const DialogOverlayImpl = React.forwardRef<DialogOverlayImplElement, DialogOverl
     return (
       // Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
       // ie. when `Overlay` and `Content` are siblings
-      <RemoveScroll as={Slot} allowPinchZoom shards={[context.contentRef]}>
+    //   <RemoveScroll as={Slot} allowPinchZoom shards={[context.contentRef]}>
         <Primitive.div
           data-state={getState(context.open)}
           {...overlayProps}
@@ -209,7 +209,7 @@ const DialogOverlayImpl = React.forwardRef<DialogOverlayImplElement, DialogOverl
           // We re-enable pointer-events prevented by `Dialog.Content` to allow scrolling the overlay.
           style={{ pointerEvents: 'auto', ...overlayProps.style }}
         />
-      </RemoveScroll>
+    //   </RemoveScroll>
     );
   }
 );
@@ -261,10 +261,10 @@ const DialogContentModal = React.forwardRef<DialogContentTypeElement, DialogCont
     const composedRefs = useComposedRefs(forwardedRef, context.contentRef, contentRef);
 
     // aria-hide everything except the content (better supported equivalent to setting aria-modal)
-    React.useEffect(() => {
-      const content = contentRef.current;
-      if (content) return hideOthers(content);
-    }, []);
+    // React.useEffect(() => {
+    //   const content = contentRef.current;
+    //   if (content) return hideOthers(content);
+    // }, []);
 
     return (
       <DialogContentImpl
@@ -388,7 +388,7 @@ const DialogContentImpl = React.forwardRef<DialogContentImplElement, DialogConte
 
     // Make sure the whole tree has focus guards as our `Dialog` will be
     // the last element in the DOM (beacuse of the `Portal`)
-    useFocusGuards();
+    // useFocusGuards();
 
     return (
       <>

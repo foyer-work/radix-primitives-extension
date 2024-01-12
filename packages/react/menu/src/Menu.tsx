@@ -5,7 +5,7 @@ import { useComposedRefs, composeRefs } from '@radix-ui/react-compose-refs';
 import { createContextScope } from '@radix-ui/react-context';
 import { useDirection } from '@radix-ui/react-direction';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
-import { useFocusGuards } from '@radix-ui/react-focus-guards';
+// import { useFocusGuards } from '@radix-ui/react-focus-guards';
 import { FocusScope } from '@radix-ui/react-focus-scope';
 import { useId } from '@radix-ui/react-id';
 import * as PopperPrimitive from '@radix-ui/react-popper';
@@ -17,7 +17,7 @@ import * as RovingFocusGroup from '@radix-ui/react-roving-focus';
 import { createRovingFocusGroupScope } from '@radix-ui/react-roving-focus';
 import { Slot } from '@radix-ui/react-slot';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
-import { hideOthers } from 'aria-hidden';
+// import { hideOthers } from 'aria-hidden';
 import { RemoveScroll } from 'react-remove-scroll';
 
 import type * as Radix from '@radix-ui/react-primitive';
@@ -263,10 +263,10 @@ const MenuRootContentModal = React.forwardRef<MenuRootContentTypeElement, MenuRo
     const composedRefs = useComposedRefs(forwardedRef, ref);
 
     // Hide everything from ARIA except the `MenuContent`
-    React.useEffect(() => {
-      const content = ref.current;
-      if (content) return hideOthers(content);
-    }, []);
+    // React.useEffect(() => {
+    //   const content = ref.current;
+    //   if (content) return hideOthers(content);
+    // }, []);
 
     return (
       <MenuContentImpl
@@ -424,7 +424,7 @@ const MenuContentImpl = React.forwardRef<MenuContentImplElement, MenuContentImpl
 
     // Make sure the whole tree has focus guards as our `MenuContent` may be
     // the last element in the DOM (beacuse of the `Portal`)
-    useFocusGuards();
+    // useFocusGuards();
 
     const isPointerMovingToSubmenu = React.useCallback((event: React.PointerEvent) => {
       const isMovingTowards = pointerDirRef.current === pointerGraceIntentRef.current?.side;
@@ -474,7 +474,7 @@ const MenuContentImpl = React.forwardRef<MenuContentImplElement, MenuContentImpl
           >
             <DismissableLayer
               asChild
-              disableOutsidePointerEvents={disableOutsidePointerEvents}
+              disableOutsidePointerEvents={false}
               onEscapeKeyDown={onEscapeKeyDown}
               onPointerDownOutside={onPointerDownOutside}
               onFocusOutside={onFocusOutside}

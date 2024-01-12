@@ -3,7 +3,7 @@ import { composeEventHandlers } from '@radix-ui/primitive';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContextScope } from '@radix-ui/react-context';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
-import { useFocusGuards } from '@radix-ui/react-focus-guards';
+// import { useFocusGuards } from '@radix-ui/react-focus-guards';
 import { FocusScope } from '@radix-ui/react-focus-scope';
 import { useId } from '@radix-ui/react-id';
 import * as PopperPrimitive from '@radix-ui/react-popper';
@@ -13,8 +13,8 @@ import { Presence } from '@radix-ui/react-presence';
 import { Primitive } from '@radix-ui/react-primitive';
 import { Slot } from '@radix-ui/react-slot';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
-import { hideOthers } from 'aria-hidden';
-import { RemoveScroll } from 'react-remove-scroll';
+// import { hideOthers } from 'aria-hidden';
+// import { RemoveScroll } from 'react-remove-scroll';
 
 import type * as Radix from '@radix-ui/react-primitive';
 import type { Scope } from '@radix-ui/react-context';
@@ -252,13 +252,13 @@ const PopoverContentModal = React.forwardRef<PopoverContentTypeElement, PopoverC
     const isRightClickOutsideRef = React.useRef(false);
 
     // aria-hide everything except the content (better supported equivalent to setting aria-modal)
-    React.useEffect(() => {
-      const content = contentRef.current;
-      if (content) return hideOthers(content);
-    }, []);
+    // React.useEffect(() => {
+    //   const content = contentRef.current;
+    //   if (content) return hideOthers(content);
+    // }, []);
 
     return (
-      <RemoveScroll as={Slot} allowPinchZoom>
+    //   <RemoveScroll as={Slot} allowPinchZoom>
         <PopoverContentImpl
           {...props}
           ref={composedRefs}
@@ -289,7 +289,7 @@ const PopoverContentModal = React.forwardRef<PopoverContentTypeElement, PopoverC
             { checkForDefaultPrevented: false }
           )}
         />
-      </RemoveScroll>
+    //   </RemoveScroll>
     );
   }
 );
@@ -395,7 +395,7 @@ const PopoverContentImpl = React.forwardRef<PopoverContentImplElement, PopoverCo
 
     // Make sure the whole tree has focus guards as our `Popover` may be
     // the last element in the DOM (beacuse of the `Portal`)
-    useFocusGuards();
+    // useFocusGuards();
 
     return (
       <FocusScope
@@ -407,7 +407,7 @@ const PopoverContentImpl = React.forwardRef<PopoverContentImplElement, PopoverCo
       >
         <DismissableLayer
           asChild
-          disableOutsidePointerEvents={disableOutsidePointerEvents}
+          disableOutsidePointerEvents={false}
           onInteractOutside={onInteractOutside}
           onEscapeKeyDown={onEscapeKeyDown}
           onPointerDownOutside={onPointerDownOutside}
